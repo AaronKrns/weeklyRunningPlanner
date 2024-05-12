@@ -24,6 +24,8 @@ app.use('/running_plans', running_plansRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
+  res.setHeader('X-XSS-Protection','1;mode=block');
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'");
 });
 
 // error handler

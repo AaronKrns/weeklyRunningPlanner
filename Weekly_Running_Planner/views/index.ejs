@@ -12,29 +12,18 @@
 
     <div class="nav">
       <ul>
-          <li><a href="/">Routes</a></li>
+          <li><a href="/">Running Routes</a></li>
           <li><a href="/running_plans">Weekly Running Plans</a></li>
       </ul>
     </div>
 
-    <h3 class="sub-header">Routes</h3>
-    <!--<form action="/routes/search" method="get" class="search">
-      <input type="text" name="query">
-      <button type="submit">Search for a Route</button>
-    </form>-->
-
+    <h3 class="routes_sub_header">Running Routes</h3>
     <div class="displayed">
       <% for(var i =0; i < routes.length; i++) { %>
         <div class="displayed_result">
           <ul>
-            <li class="displayed_result_info">Route ID: <%= routes[i].route_id %> <br/> Route name: <%= routes[i].route_name %> <br/> Distance: <%= routes[i].distance %> <br/> Elevation profile: <%= routes[i].elevation_profile %> <br/> Terrain: <%= routes[i].terrain %></li>
-            <!--<li class="displayed_update">
-              <form action="/routes/update" method="get">
-                <input type="hidden" name="route_id" value="<%= routes[i].route_id %>"/>
-                <button type="submit" style="background-color:rgba(255, 251, 0, 0.459)">Update Route</button>
-              </form>
-            </li>-->
-            <li class="displayed_delete">
+            <li class="displayed_result_info">Route ID: <%= routes[i].route_id %> <br/> Route Name: <%= routes[i].route_name %> <br/> Run Type: <%= routes[i].run_type %> <br/> Distance: <%= routes[i].distance %></li>
+            <li class="routes_delete">
               <form action="/delete" method="get">
                 <input type="hidden" name="route_id" value="<%= routes[i].route_id %>">
                 <button type="submit" style="background-color:rgba(255, 30, 0, 0.459)">Delete Route</button>
@@ -45,6 +34,7 @@
       <% } %>
     </div>
 
-    <button class="add" style="background-color:rgba(5, 150, 0, 0.425)"><a href="/add">+ Add a Route</a></button>
+    <button class="add" style="background-color:rgba(5, 150, 0, 0.425)"><a href="/add">Add a Route</a></button>
+    <p class="copyright">&copy Weekly Running Planner 2024</p>
   </body>
 </html>

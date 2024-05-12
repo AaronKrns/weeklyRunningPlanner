@@ -12,28 +12,17 @@
 
     <div class="nav">
       <ul>
-          <li><a href="/">Routes</a></li>
+          <li><a href="/">Running Routes</a></li>
           <li><a href="/running_plans">Weekly Running Plans</a></li>
       </ul>
     </div>
 
-    <h3 class="sub-header">Weekly Running Plans</h3>
-    <!--<form action="/running_plans/search" method="get" class="search">
-      <input type="text" name="query">
-      <button type="submit">Search for a Plan</button>
-    </form>-->
-
+    <h3 class="plan_sub_header">Weekly Running Plans</h3>
     <div class="displayed">
       <% for(var i =0; i < running_plans.length; i++) { %>
         <div class="displayed_result">
           <ul>
-            <li class="displayed_result_info">Running Plan ID: <%= running_plans[i].running_plan_id %> <br/> Monday: <%= running_plans[i].monday %> <br/> Tuesday: <%= running_plans[i].tuesday %> <br/> Wednesday: <%= running_plans[i].wednesday %> <br/> Thursday: <%= running_plans[i].thursday %> <br/> Friday: <%= running_plans[i].friday %> <br/> Saturday <%= running_plans[i].saturday %> <br/> Sunday: <%= running_plans[i].sunday %></li>
-            <li class="displayed_update">
-              <!--<form action="/running_plans/update" method="get">
-                <input type="hidden" name="running_plan_id" value="<%= running_plans[i].running_plan_id %>"/>
-                <button type="submit" style="background-color:rgba(255, 251, 0, 0.459)">Update Running Plan</button>
-              </form>-->
-            </li>
+            <li class="displayed_result_info"><u>Running Plan ID:____<%= running_plans[i].running_plan_id %></u> <br/> <u>Monday:_____________<%= running_plans[i].monday %></u> <br/> <u>Tuesday:_____________<%= running_plans[i].tuesday %></u> <br/> <u>Wednesday:_________<%= running_plans[i].wednesday %></u> <br/> <u>Thursday:____________<%= running_plans[i].thursday %></u> <br/> <u>Friday:_______________<%= running_plans[i].friday %></u> <br/> <u>Saturday:____________<%= running_plans[i].saturday %></u> <br/> <u>Sunday:_____________<%= running_plans[i].sunday %></u></li>
             <li class="displayed_delete">
               <form action="/running_plans/delete" method="get">
                 <input type="hidden" name="running_plan_id" value="<%= running_plans[i].running_plan_id %>">
@@ -45,6 +34,7 @@
       <% } %>
     </div>
 
-    <button class="add" style="background-color:rgba(5, 150, 0, 0.425)"><a href="/running_plans/add">+ Add a Running Plan</a></button> 
+    <button class="add" style="background-color:rgba(5, 150, 0, 0.425)"><a href="/running_plans/add">Add a Running Plan</a></button> 
+    <p class="copyright">&copy Weekly Running Planner 2024</p>
   </body>
 </html>

@@ -5,9 +5,8 @@ USE weekly_running_planner;
 CREATE TABLE routes (
     route_id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     route_name VARCHAR(255),
-    distance VARCHAR(255),
-    elevation_profile VARCHAR(255),
-    terrain VARCHAR(255)
+    run_type VARCHAR(255),
+    distance VARCHAR(255)
 );
 
 CREATE TABLE running_plans (

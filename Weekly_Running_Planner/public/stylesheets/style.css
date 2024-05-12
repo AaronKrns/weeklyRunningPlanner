@@ -1,0 +1,161 @@
+body {
+  background-color: #ffffff;
+}
+
+.header{
+  position: absolute;
+  top: 3%;
+  left: 2%;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding-left: 75px;
+  background:#d3d3d3;
+  margin-top: 105px;
+}
+.nav ul {
+  display: flex;
+  margin-top: 12px;
+}
+.nav li {
+  list-style: none;
+}
+.nav a {
+  padding-right:100px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #000000;
+}
+
+
+.sub-header {
+  position: absolute;
+  top: 25%;
+  left: 40%;
+}
+.routes_sub_header {
+  position: absolute;
+  top: 25%;
+  left: 45%;
+}
+.add_route_sub_header {
+  position: absolute;
+  top: 25%;
+  left: 44%;
+}
+.plan_sub_header {
+  position: absolute;
+  top: 25%;
+  left: 44%;
+}
+.add_plan_sub_header {
+  position: absolute;
+  top: 25%;
+  left: 43%; 
+}
+
+.displayed {
+  margin-top: 160px;
+}
+.displayed_result {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding-left: 75px;
+  background:#ececec;
+  margin-top: 30px;
+}
+.displayed_result ul {
+  display: flex;
+  margin-top: 12px;
+}
+.displayed_result li {
+  list-style: none;
+  padding-right:100px;
+}
+.displayed_result_info {
+  max-width: 600px;
+}
+.routes_delete {
+  margin-top: 30px;
+}
+.displayed_delete {
+  margin-top: 80px;
+}
+.add {
+  display: flex;
+  align-content: center;
+  margin-left: 47%;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+.add a {
+  text-decoration: none;
+  color: black;
+}
+
+
+.add_route_input_1 {
+  position: absolute;
+  top: 40%;
+  left: 44%;
+}
+.add_route_input_2 {
+  position: absolute;
+  top: 47%;
+  left: 44%;
+}
+.add_route_input_3 {
+  position: absolute;
+  top: 54%;
+  left: 44%;
+}
+
+.route_input_submit {
+  position: absolute;
+  top: 63%;
+  left: 48%;
+}
+
+#running_plan_container {
+  margin-top: 125px;
+}
+
+.plan_details_column {
+  position: absolute;
+  left: auto;
+  width: 100px;
+  height: 120px;
+}
+
+.plan_recommender_input_column {
+  position: absolute;
+  left: auto;
+  margin-left: 130px;
+  width: 100px;
+  height: 120px;
+}
+
+.plan_day_label  {
+  margin-top: 6px;
+}
+
+.plan_input_submit {
+  position: absolute;
+  top: 73%;
+  left: 48%;
+}
+
+.copyright {
+  position: absolute;
+  bottom: 0;
+  left: 0;  
+}
+
+.error {
+  color: red;
+}

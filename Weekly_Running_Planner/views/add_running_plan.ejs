@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Add Weekly Running Plan</title>
+    <title>Add a Weekly Running Plan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css'/>
   </head>
@@ -12,399 +12,334 @@
 
     <div class="nav">
       <ul>
-          <li><a href="/">Routes</a></li>
+          <li><a href="/">Running Routes</a></li>
           <li><a href="/running_plans">Weekly Running Plans</a></li>
           <li><a href="/running_plans/add">Add a Weekly Running Plan</a></li>
       </ul>
     </div>
 
-    <h3 class="sub-header">Add a Weekly Running Plan</h3>
+    <h3 class="add_plan_sub_header">Add a Weekly Running Plan</h3>
 
-    <form action="/running_plans/add" method="post">
-      <div class="">
-        <label for="monday_route_type">Route type</label>
-        <input id="monday_route_type" type="text" onchange="tuesday_route_recommender_function();" onchange="route_recommender_function();"/>
+    </br>
+    <div id="running_plan_container" class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <p><b>Day</b></p>
+          </br>
+          </br>
+          </br>
+          <label class="plan_day_label">Monday</label></br>
+          <label class="plan_day_label">Tuesday</label></br>
+          <label class="plan_day_label">Wednesday</label></br>
+          <label class="plan_day_label">Thursday</label></br>
+          <label class="plan_day_label">Friday</label></br>
+          <label class="plan_day_label">Saturday</label></br>
+          <label class="plan_day_label">Sunday</label>
+        </div>
+        <div class="col-md-3">
+          <p><b>Running Plan Details</b></p>
+          </br>
+          </br>
+          </br>  
+          <form action="/running_plans/add" method="post">
+            <div class="plan_details_column">
+              <input id="monday" type="text" name="monday"/>
+              <input id="tuesday" type="text" name="tuesday"/>
+              <input id="wednesday" type="text" name="wednesday"/>
+              <input id="thursday" type="text" name="thursday"/>
+              <input id="friday" type="text" name="friday"/>
+              <input id="saturday" type="text" name="saturday"/>
+              <input id="sunday" type="text" name="sunday"/>
+            </div>
+            <button type="submit" class="plan_input_submit" style="background-color:rgba(5, 150, 0, 0.425)">Add running plan</button>
+          </form>
+        </div>
+        <div class="col-md-3" align="center">
+          <div>
+            <p><b>Run Difficulty Recommender</b> (Enter either: Long, Intervals, Tempo, Base, Recovery, or Rest)</p>
+            </br>
+            </br>
+            <form>
+              <div class="plan_recommender_input_column">
+                <input id="monday_run_type" type="text" onchange="tuesday_run_recommender_function();"/>
+                <input id="tuesday_route_type" type="text" onchange="wednesday_run_recommender_function();"/>
+                <input id="wednesday_route_type" type="text" onchange="thursday_run_recommender_function();"/>
+                <input id="thursday_route_type" type="text" onchange="friday_run_recommender_function();"/>
+                <input id="friday_route_type" type="text" onchange="saturday_run_recommender_function();"/>
+                <input id="saturday_route_type" type="text" onchange="sunday_run_recommender_function();"/>
+                <input id="sunday_route_type" type="text" onchange="monday_run_recommender_function();"/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="">
+            <label><b>Next Recommended Run Difficulty - </b></label>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            <label id="recommended_run"></label>
+          </div>
+        </div>
       </div>
-      <div class="">
-        <label for="tuesday_route_type">Route type</label>
-        <input id="tuesday_route_type" type="text" onchange="wednesday_route_recommender_function();"/>
-      </div>
-      <div class="">
-        <label for="wednesday_route_type">Route type</label>
-        <input id="wednesday_route_type" type="text" onchange="thursday_route_recommender_function();"/>
-      </div>
-      <div class="">
-        <label for="thursday_route_type">Route type</label>
-        <input id="thursday_route_type" type="text" onchange="friday_route_recommender_function();"/>
-      </div>
-      <div class="">
-        <label for="friday_route_type">Route type</label>
-        <input id="friday_route_type" type="text" onchange="saturday_route_recommender_function();"/>
-      </div>
-      <div class="">
-        <label for="saturday_route_type">Route type</label>
-        <input id="saturday_route_type" type="text" onchange="sunday_route_recommender_function();"/>
-      </div>
-      <div class="">
-        <label for="sunday_route_type">Route type</label>
-        <input id="sunday_route_type" type="text" onchange="monday_route_recommender_function();"/>
-      </div>
-    </form>
+      <br/>
+      <br/>
+      <br/>
+    </div>
 
-    <form action="/running_plans/add" method="post">
-      <div class="add_input_1">
-        <label for="monday">Monday</label>
-        <input id="monday"type="text" name="monday"/>
-      </div>
-      <div class="">
-        <label>Next recommended route difficulty - </label>
-        <label id="recommended_tuesday_route"></label>
-      </div>
-      <div class="add_input_2">
-        <label for="tuesday">Tuesday</label>
-        <input type="text" name="tuesday"/>
-      </div>
-      <div class="">
-        <label>Next recommended route difficulty - </label>
-        <label id="recommended_wednesday_route"></label>
-      </div>
-      <div class="add_input_3">
-        <label for="wednesday">Wednesday</label>
-        <input type="text" name="wednesday"/>
-      </div>
-      <div class="">
-        <label>Next recommended route difficulty - </label>
-        <label id="recommended_thursday_route"></label>
-      </div>
-      <div class="add_input_4">
-        <label for="thursday">Thursday</label>
-        <input type="text" name="thursday"/>
-      </div>
-      <div class="">
-        <label>Next recommended route difficulty - </label>
-        <label id="recommended_friday_route"></label>
-      </div>
-      <div class="add_input_5">
-        <label for="friday">Friday</label>
-        <input type="text" name="friday"/>
-      </div>
-      <div class="">
-        <label>Next recommended route difficulty - </label>
-        <label id="recommended_saturday_route"></label>
-      </div>
-      <div class="add_input_6">
-        <label for="saturday">Saturday</label>
-        <input type="text" name="saturday"/>
-      </div>
-      <div class="">
-        <label>Next recommended route difficulty - </label>
-        <label id="recommended_sunday_route"></label>
-      </div>
-      <div class="add_input_7">
-        <label for="sunday">Sunday</label>
-        <input type="text" name="sunday"/>
-      </div>
-      <div class="">
-        <label>Next recommended route difficulty - </label>
-        <label id="recommended_monday_route"></label>
-      </div>
+    <p class="copyright">&copy Weekly Running Planner 2024</p>
 
-      <script>  
-        var mondayMediumRunCounter = 0; 
-        var tuesdayMediumRunCounter = 0;    
-        var wednesdayMediumRunCounter = 0;
-        var thursdayMediumRunCounter = 0;
-        var fridayMediumRunCounter = 0;
-        var saturdayMediumRunCounter = 0;
-        var sundayMediumRunCounter = 0;
-        function tuesday_route_recommender_function() {
-          var mon_route_type = document.getElementById("monday_route_type").value;
-          /*var tempoRunCounter = 0;
-          var intervalsRunCounter = 0;
-          var longRunCounter = 0;*/
-
-          //do opposite of string concatenation on mon value
-          //example string to concatenate: 'Route 1, 4km, '
-          //                                0123456789
-          //                                          0123456789
-          //var mon_distance = mon.substr(9, 3);
-          /*if (mon_route_distance == "") {
-            document.getElementById("recommended_tuesday_route").innerHTML = "";
-          }
-          else if (mon_route_distance <= 2) {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Hard (greater than 5km distance)";
-          }
-          else if (mon_route_distance > 2 && mon_route_distance <= 5) {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Medium (2km to 5km distance)";
-          }
-          else if (mon_route_distance > 5) {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Rest day";
-          }
-          else {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Insufficient input";
-          }*/
-          if (mon_route_type == "") {
-            document.getElementById("recommended_tuesday_route").innerHTML = "";
-            mondayMediumRunCounter -=1;
-            console.log(mondayMediumRunCounter);
-          }
-          else if (mon_route_type == "Tempo" || mon_route_type == "Intervals" || mon_route_type == "Long") {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          /*else if (mon_route_type == "Tempo") {
-            tempoRunCounter +=1;
-            document.getElementById("recommended_tuesday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (mon_route_type == "Intervals") {
-            intervalsRunCounter +=1;
-            document.getElementById("recommended_tuesday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (mon_route_type == "Long") {
-            longRunCounter +=1;
-            document.getElementById("recommended_tuesday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }*/
-          /*else if (mon_route_type == "Base" && (mondayMediumRunCounter < 1 || tuesdayMediumRunCounter < 1 || wednesdayMediumRunCounter < 1 ||  thursdayMediumRunCounter < 1 ||  fridayMediumRunCounter < 1 ||  saturdayMediumRunCounter < 1 ||  sundayMediumRunCounter < 1)) {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-          }*/
-          else if (mon_route_type == "Base" && (mondayMediumRunCounter < 1 && tuesdayMediumRunCounter < 1 && wednesdayMediumRunCounter < 1 &&  thursdayMediumRunCounter < 1 &&  fridayMediumRunCounter < 1 &&  saturdayMediumRunCounter < 1 &&  sundayMediumRunCounter < 1)) {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-            if (mon_route_type == "Base") {
-              mondayMediumRunCounter +=1;
+    
+    <script>  
+      var mondayMediumRunCounter = 0; 
+      var tuesdayMediumRunCounter = 0;    
+      var wednesdayMediumRunCounter = 0;
+      var thursdayMediumRunCounter = 0;
+      var fridayMediumRunCounter = 0;
+      var saturdayMediumRunCounter = 0;
+      var sundayMediumRunCounter = 0;
+      function tuesday_run_recommender_function() {
+        var mon_route_type = document.getElementById("monday_run_type").value;
+        if (mon_route_type == "") {
+          document.getElementById("recommended_run").innerHTML = "";
+          if (mondayMediumRunCounter == 1) {
+              mondayMediumRunCounter -=1;
               console.log(mondayMediumRunCounter);
-            }
-          }
-          else if (mon_route_type == "Base") {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (mon_route_type != "Base" && mondayMediumRunCounter == 1) {
-            mondayMediumRunCounter -=1;
-            console.log(mondayMediumRunCounter);
-          }
-          //below might not work cause above else if might cancel below one
-          /*else if (mon_route_type == "Base") {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-            mondayMediumRunCounter +=1;
-          }*/
-          //below might not work cause above else if might cancel below one
-          /*else if (mon_route_type == "" || mon_route_type != "Base") {
-            mondayMediumRunCounter -=1;
-          }*/
-          /*else if (mon_route_type == "Base") {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Medium difficulty run (Base run)";
-          }
-          else if (mon_route_type == "Base") {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Medium difficulty run (Base run)";
-          }
-          else if (mon_route_type == "Base") {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Medium difficulty run (Base run)";
-          }
-          else if (mon_route_type == "Base") {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Medium difficulty run (Base run)";
-          }*/
-          else if (mon_route_type == "Recovery" || mon_route_type == "Rest") {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-          }
-          else {
-            document.getElementById("recommended_tuesday_route").innerHTML = "Insufficient input";
           }
         }
+        else if (mon_route_type == "Tempo" || mon_route_type == "Intervals" || mon_route_type == "Long") {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+        }
+        else if (mon_route_type == "Base" && (mondayMediumRunCounter == 1 || tuesdayMediumRunCounter == 1 || wednesdayMediumRunCounter == 1 || thursdayMediumRunCounter == 1 || fridayMediumRunCounter == 1 || saturdayMediumRunCounter == 1 || sundayMediumRunCounter == 1)) {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+          mondayMediumRunCounter +=1;
+          console.log(mondayMediumRunCounter);          
+        }
+        else if (mon_route_type == "Base" && (mondayMediumRunCounter == 0 && tuesdayMediumRunCounter == 0 && wednesdayMediumRunCounter == 0 && thursdayMediumRunCounter == 0 && fridayMediumRunCounter == 0 && saturdayMediumRunCounter == 0 && sundayMediumRunCounter == 0)) {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+          mondayMediumRunCounter +=1;
+          console.log(mondayMediumRunCounter);          
+        }
+        else if (mon_route_type != "Base" && mondayMediumRunCounter == 1) {
+          mondayMediumRunCounter -=1;
+          console.log(mondayMediumRunCounter);
+        }
+        else if (mon_route_type == "Recovery" || mon_route_type == "Rest") {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+        }
+        else {
+          document.getElementById("recommended_run").innerHTML = "Insufficient input";
+        }
+      }
 
-        function wednesday_route_recommender_function() {
-          var tue_route_type = document.getElementById("tuesday_route_type").value;
-          if (tue_route_type == "") {
-            document.getElementById("recommended_wednesday_route").innerHTML = "";
+      function wednesday_run_recommender_function() {
+        var tue_route_type = document.getElementById("tuesday_route_type").value;
+        if (tue_route_type == "") {
+          document.getElementById("recommended_run").innerHTML = "";
+          if (tuesdayMediumRunCounter == 1) {
             tuesdayMediumRunCounter -=1;
             console.log(tuesdayMediumRunCounter);
           }
-          else if (tue_route_type == "Tempo" || tue_route_type == "Intervals" || tue_route_type == "Long") {
-            document.getElementById("recommended_wednesday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (tue_route_type == "Base" && (mondayMediumRunCounter < 1 && tuesdayMediumRunCounter < 1 && wednesdayMediumRunCounter < 1 &&  thursdayMediumRunCounter < 1 &&  fridayMediumRunCounter < 1 &&  saturdayMediumRunCounter < 1 &&  sundayMediumRunCounter < 1)) {
-            document.getElementById("recommended_wednesday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-            if (tue_route_type == "Base") {
-              tuesdayMediumRunCounter +=1;
-              console.log(tuesdayMediumRunCounter);
-            }
-          }
-          else if (tue_route_type == "Base") {
-            document.getElementById("recommended_wednesday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (tue_route_type != "Base" && tuesdayMediumRunCounter == 1) {
-            tuesdayMediumRunCounter -=1;
-            console.log(tuesdayMediumRunCounter);
-          }
-          else if (tue_route_type == "Recovery" || tue_route_type == "Rest") {
-            document.getElementById("recommended_wednesday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-          }
-          else {
-            document.getElementById("recommended_wednesday_route").innerHTML = "Insufficient input";
-          }
         }
+        else if (tue_route_type == "Tempo" || tue_route_type == "Intervals" || tue_route_type == "Long") {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+        }
+        else if (tue_route_type == "Base" && (mondayMediumRunCounter == 1 || tuesdayMediumRunCounter == 1 || wednesdayMediumRunCounter == 1 || thursdayMediumRunCounter == 1 || fridayMediumRunCounter == 1 || saturdayMediumRunCounter == 1 || sundayMediumRunCounter == 1)) {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+          tuesdayMediumRunCounter +=1;
+          console.log(tuesdayMediumRunCounter);          
+        }
+        else if (tue_route_type == "Base" && (mondayMediumRunCounter == 0 && tuesdayMediumRunCounter == 0 && wednesdayMediumRunCounter == 0 && thursdayMediumRunCounter == 0 && fridayMediumRunCounter == 0 && saturdayMediumRunCounter == 0 && sundayMediumRunCounter == 0)) {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+          tuesdayMediumRunCounter +=1;
+          console.log(tuesdayMediumRunCounter);
+        }
+        else if (tue_route_type != "Base" && tuesdayMediumRunCounter == 1) {
+          tuesdayMediumRunCounter -=1;
+          console.log(tuesdayMediumRunCounter);
+        }
+        else if (tue_route_type == "Recovery" || tue_route_type == "Rest") {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+        }
+        else {
+          document.getElementById("recommended_run").innerHTML = "Insufficient input";
+        }
+      }
 
-        function thursday_route_recommender_function() {
-          var wed_route_type = document.getElementById("wednesday_route_type").value;
-          if (wed_route_type == "") {
-            document.getElementById("recommended_thursday_route").innerHTML = "";
-            wednesdayMediumRunCounter -=1;
-            console.log(wednesdayMediumRunCounter);
-          }
-          else if (wed_route_type == "Tempo" || wed_route_type == "Intervals" || wed_route_type == "Long") {
-            document.getElementById("recommended_thursday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (wed_route_type == "Base" && (mondayMediumRunCounter < 1 && tuesdayMediumRunCounter < 1 && wednesdayMediumRunCounter < 1 &&  thursdayMediumRunCounter < 1 &&  fridayMediumRunCounter < 1 &&  saturdayMediumRunCounter < 1 &&  sundayMediumRunCounter < 1)) {
-            document.getElementById("recommended_thursday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-            if (wed_route_type == "Base") {
-              wednesdayMediumRunCounter +=1;
+      function thursday_run_recommender_function() {
+        var wed_route_type = document.getElementById("wednesday_route_type").value;
+        if (wed_route_type == "") {
+          document.getElementById("recommended_run").innerHTML = "";
+          if (wednesdayMediumRunCounter == 1) {
+              wednesdayMediumRunCounter -=1;
               console.log(wednesdayMediumRunCounter);
             }
-          }
-          else if (wed_route_type == "Base") {
-            document.getElementById("recommended_thursday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (wed_route_type != "Base" && wednesdayMediumRunCounter == 1) {
-            wednesdayMediumRunCounter -=1;
-            console.log(wednesdayMediumRunCounter);
-          }
-          else if (wed_route_type == "Recovery" || wed_route_type == "Rest") {
-            document.getElementById("recommended_thursday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-          }
-          else {
-            document.getElementById("recommended_thursday_route").innerHTML = "Insufficient input";
-          }
         }
+        else if (wed_route_type == "Tempo" || wed_route_type == "Intervals" || wed_route_type == "Long") {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+        }
+        else if (wed_route_type == "Base" && (mondayMediumRunCounter == 1 || tuesdayMediumRunCounter == 1 || wednesdayMediumRunCounter == 1 ||  thursdayMediumRunCounter == 1 ||  fridayMediumRunCounter == 1 ||  saturdayMediumRunCounter == 1 ||  sundayMediumRunCounter == 1)) {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+          wednesdayMediumRunCounter +=1;
+          console.log(wednesdayMediumRunCounter);          
+        }
+        else if (wed_route_type == "Base" && (mondayMediumRunCounter == 0 && tuesdayMediumRunCounter == 0 && wednesdayMediumRunCounter == 0 && thursdayMediumRunCounter == 0 && fridayMediumRunCounter == 0 && saturdayMediumRunCounter == 0 && sundayMediumRunCounter == 0)) {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+          wednesdayMediumRunCounter +=1;
+          console.log(wednesdayMediumRunCounter);          
+        }
+        else if (wed_route_type != "Base" && wednesdayMediumRunCounter == 1) {
+          wednesdayMediumRunCounter -=1;
+          console.log(wednesdayMediumRunCounter);
+        }
+        else if (wed_route_type == "Recovery" || wed_route_type == "Rest") {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+        }
+        else {
+          document.getElementById("recommended_run").innerHTML = "Insufficient input";
+        }
+      }
 
-        function friday_route_recommender_function() {
-          var thur_route_type = document.getElementById("thursday_route_type").value;
-          if (thur_route_type == "") {
-            document.getElementById("recommended_friday_route").innerHTML = "";
-            thursdayMediumRunCounter -=1;
-            console.log(thursdayMediumRunCounter);
-          }
-          else if (thur_route_type == "Tempo" || thur_route_type == "Intervals" || thur_route_type == "Long") {
-            document.getElementById("recommended_friday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (thur_route_type == "Base" && (mondayMediumRunCounter < 1 && tuesdayMediumRunCounter < 1 && wednesdayMediumRunCounter < 1 &&  thursdayMediumRunCounter < 1 &&  fridayMediumRunCounter < 1 &&  saturdayMediumRunCounter < 1 &&  sundayMediumRunCounter < 1)) {
-            document.getElementById("recommended_friday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-            if (thur_route_type == "Base") {
-              thursdayMediumRunCounter +=1;
+      function friday_run_recommender_function() {
+        var thur_route_type = document.getElementById("thursday_route_type").value;
+        if (thur_route_type == "") {
+          document.getElementById("recommended_run").innerHTML = "";
+          if (thursdayMediumRunCounter == 1) {
+              thursdayMediumRunCounter -=1;
               console.log(thursdayMediumRunCounter);
             }
-          }
-          else if (thur_route_type == "Base") {
-            document.getElementById("recommended_friday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (thur_route_type != "Base" && thursdayMediumRunCounter == 1) {
-            thursdayMediumRunCounter -=1;
-            console.log(thursdayMediumRunCounter);
-          }
-          else if (thur_route_type == "Recovery" || thur_route_type == "Rest") {
-            document.getElementById("recommended_friday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-          }
-          else {
-            document.getElementById("recommended_friday_route").innerHTML = "Insufficient input";
-          }
         }
+        else if (thur_route_type == "Tempo" || thur_route_type == "Intervals" || thur_route_type == "Long") {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+        }
+        else if (thur_route_type == "Base" && (mondayMediumRunCounter == 1 || tuesdayMediumRunCounter == 1 || wednesdayMediumRunCounter == 1 ||  thursdayMediumRunCounter == 1 ||  fridayMediumRunCounter == 1 ||  saturdayMediumRunCounter == 1 ||  sundayMediumRunCounter == 1)) {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+          thursdayMediumRunCounter +=1;
+          console.log(thursdayMediumRunCounter);          
+        }
+        else if (thur_route_type == "Base" && (mondayMediumRunCounter == 0 && tuesdayMediumRunCounter == 0 && wednesdayMediumRunCounter == 0 && thursdayMediumRunCounter == 0 && fridayMediumRunCounter == 0 && saturdayMediumRunCounter == 0 && sundayMediumRunCounter == 0)) {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+          thursdayMediumRunCounter +=1;
+          console.log(thursdayMediumRunCounter);          
+        }
+        else if (thur_route_type != "Base" && thursdayMediumRunCounter == 1) {
+          thursdayMediumRunCounter -=1;
+          console.log(thursdayMediumRunCounter);
+        }
+        else if (thur_route_type == "Recovery" || thur_route_type == "Rest") {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+        }
+        else {
+          document.getElementById("recommended_run").innerHTML = "Insufficient input";
+        }
+      }
 
-        function saturday_route_recommender_function() {
-          var fri_route_type = document.getElementById("friday_route_type").value;
-          if (fri_route_type == "") {
-            document.getElementById("recommended_saturday_route").innerHTML = "";
-            fridayMediumRunCounter -=1;
-            console.log(fridayMediumRunCounter);
-          }
-          else if (fri_route_type == "Tempo" || fri_route_type == "Intervals" || fri_route_type == "Long") {
-            document.getElementById("recommended_saturday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (fri_route_type == "Base" && (mondayMediumRunCounter < 1 && tuesdayMediumRunCounter < 1 && wednesdayMediumRunCounter < 1 &&  thursdayMediumRunCounter < 1 &&  fridayMediumRunCounter < 1 &&  saturdayMediumRunCounter < 1 &&  sundayMediumRunCounter < 1)) {
-            document.getElementById("recommended_saturday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-            if (fri_route_type == "Base") {
-              fridayMediumRunCounter +=1;
+      function saturday_run_recommender_function() {
+        var fri_route_type = document.getElementById("friday_route_type").value;
+        if (fri_route_type == "") {
+          document.getElementById("recommended_run").innerHTML = "";
+          if (fridayMediumRunCounter == 1) {
+              fridayMediumRunCounter -=1;
               console.log(fridayMediumRunCounter);
             }
-          }
-          else if (fri_route_type == "Base") {
-            document.getElementById("recommended_saturday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (fri_route_type != "Base" && fridayMediumRunCounter == 1) {
-            fridayMediumRunCounter -=1;
-            console.log(fridayMediumRunCounter);
-          }
-          else if (fri_route_type == "Recovery" || fri_route_type == "Rest") {
-            document.getElementById("recommended_saturday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-          }
-          else {
-            document.getElementById("recommended_saturday_route").innerHTML = "Insufficient input";
-          }
         }
+        else if (fri_route_type == "Tempo" || fri_route_type == "Intervals" || fri_route_type == "Long") {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+        }
+        else if (fri_route_type == "Base" && (mondayMediumRunCounter == 1 || tuesdayMediumRunCounter == 1 || wednesdayMediumRunCounter == 1 ||  thursdayMediumRunCounter == 1 ||  fridayMediumRunCounter == 1 ||  saturdayMediumRunCounter == 1 ||  sundayMediumRunCounter == 1)) {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+          fridayMediumRunCounter +=1;
+          console.log(fridayMediumRunCounter);          
+        }
+        else if (fri_route_type == "Base" && (mondayMediumRunCounter == 0 && tuesdayMediumRunCounter == 0 && wednesdayMediumRunCounter == 0 && thursdayMediumRunCounter == 0 && fridayMediumRunCounter == 0 && saturdayMediumRunCounter == 0 && sundayMediumRunCounter == 0)) {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+          fridayMediumRunCounter +=1;
+          console.log(fridayMediumRunCounter);          
+        }
+        else if (fri_route_type != "Base" && fridayMediumRunCounter == 1) {
+          fridayMediumRunCounter -=1;
+          console.log(fridayMediumRunCounter);
+        }
+        else if (fri_route_type == "Recovery" || fri_route_type == "Rest") {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+        }
+        else {
+          document.getElementById("recommended_run").innerHTML = "Insufficient input";
+        }
+      }
 
-        function sunday_route_recommender_function() {
-          var sat_route_type = document.getElementById("saturday_route_type").value;
-          if (sat_route_type == "") {
-            document.getElementById("recommended_sunday_route").innerHTML = "";
-            saturdayMediumRunCounter -=1;
-            console.log(saturdayMediumRunCounter);
-          }
-          else if (sat_route_type == "Tempo" || sat_route_type == "Intervals" || sat_route_type == "Long") {
-            document.getElementById("recommended_sunday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (sat_route_type == "Base" && (mondayMediumRunCounter < 1 && tuesdayMediumRunCounter < 1 && wednesdayMediumRunCounter < 1 &&  thursdayMediumRunCounter < 1 &&  fridayMediumRunCounter < 1 &&  saturdayMediumRunCounter < 1 &&  sundayMediumRunCounter < 1)) {
-            document.getElementById("recommended_sunday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-            if (sat_route_type == "Base") {
-              saturdayMediumRunCounter +=1;
+      function sunday_run_recommender_function() {
+        var sat_route_type = document.getElementById("saturday_route_type").value;
+        if (sat_route_type == "") {
+          document.getElementById("recommended_run").innerHTML = "";
+          if (saturdayMediumRunCounter == 1) {
+              saturdayMediumRunCounter -=1;
               console.log(saturdayMediumRunCounter);
             }
-          }
-          else if (sat_route_type == "Base") {
-            document.getElementById("recommended_sunday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (sat_route_type != "Base" && saturdayMediumRunCounter == 1) {
-            saturdayMediumRunCounter -=1;
-            console.log(saturdayMediumRunCounter);
-          }
-          else if (sat_route_type == "Recovery" || sat_route_type == "Rest") {
-            document.getElementById("recommended_sunday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-          }
-          else {
-            document.getElementById("recommended_sunday_route").innerHTML = "Insufficient input";
-          }
         }
+        else if (sat_route_type == "Tempo" || sat_route_type == "Intervals" || sat_route_type == "Long") {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+        }
+        else if (sat_route_type == "Base" && (mondayMediumRunCounter == 1 || tuesdayMediumRunCounter == 1 || wednesdayMediumRunCounter == 1 ||  thursdayMediumRunCounter == 1 ||  fridayMediumRunCounter == 1 ||  saturdayMediumRunCounter == 1 ||  sundayMediumRunCounter == 1)) {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+          saturdayMediumRunCounter +=1;
+          console.log(saturdayMediumRunCounter);          
+        }
+        else if (sat_route_type == "Base" && (mondayMediumRunCounter == 0 && tuesdayMediumRunCounter == 0 && wednesdayMediumRunCounter == 0 && thursdayMediumRunCounter == 0 && fridayMediumRunCounter == 0 && saturdayMediumRunCounter == 0 && sundayMediumRunCounter == 0)) {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+          saturdayMediumRunCounter +=1;
+          console.log(saturdayMediumRunCounter);          
+        }
+        else if (sat_route_type != "Base" && saturdayMediumRunCounter == 1) {
+          saturdayMediumRunCounter -=1;
+          console.log(saturdayMediumRunCounter);
+        }
+        else if (sat_route_type == "Recovery" || sat_route_type == "Rest") {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+        }
+        else {
+          document.getElementById("recommended_run").innerHTML = "Insufficient input";
+        }
+      }
 
-        function monday_route_recommender_function() {
-          var sun_route_type = document.getElementById("sunday_route_type").value;
-          if (sun_route_type == "") {
-            document.getElementById("recommended_monday_route").innerHTML = "";
-            sundayMediumRunCounter -=1; //this is needed because when sun_route_type does not have a value and is therefore not equal to 'base', it does not decrement the sundayMediumRunCounter counter.
-            //minus 1 is occuring in console because of above line
-            console.log(sundayMediumRunCounter);
-          }
-          else if (sun_route_type == "Tempo" || sun_route_type == "Intervals" || sun_route_type == "Long") {
-            document.getElementById("recommended_monday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          //not working because all counters need to be less than 0 to increment target counter when 'base' inputted
-          else if (sun_route_type == "Base" && (mondayMediumRunCounter < 1 && tuesdayMediumRunCounter < 1 && wednesdayMediumRunCounter < 1 &&  thursdayMediumRunCounter < 1 &&  fridayMediumRunCounter < 1 &&  saturdayMediumRunCounter < 1 &&  sundayMediumRunCounter < 1)) {
-            document.getElementById("recommended_monday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-            if (sun_route_type == "Base") {
-              sundayMediumRunCounter +=1;
+      function monday_run_recommender_function() {
+        var sun_route_type = document.getElementById("sunday_route_type").value;
+        if (sun_route_type == "") {
+          document.getElementById("recommended_run").innerHTML = "";
+          if (sundayMediumRunCounter == 1) {
+              sundayMediumRunCounter -=1;
               console.log(sundayMediumRunCounter);
             }
-          }
-          else if (sun_route_type == "Base") {
-            document.getElementById("recommended_monday_route").innerHTML = "Easy difficulty run (Recovery run or rest day)";
-          }
-          else if (sun_route_type != "Base" && sundayMediumRunCounter == 1) {
-            sundayMediumRunCounter -=1;
-            console.log(sundayMediumRunCounter);
-          }
-          else if (sun_route_type == "Recovery" || sun_route_type == "Rest") {
-            document.getElementById("recommended_monday_route").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
-          }
-          else {
-            document.getElementById("recommended_monday_route").innerHTML = "Insufficient input";
-          }
         }
-      </script>
+        else if (sun_route_type == "Tempo" || sun_route_type == "Intervals" || sun_route_type == "Long") {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+        }
+        else if (sun_route_type == "Base" && (mondayMediumRunCounter == 1 || tuesdayMediumRunCounter == 1 || wednesdayMediumRunCounter == 1 ||  thursdayMediumRunCounter == 1 ||  fridayMediumRunCounter == 1 ||  saturdayMediumRunCounter == 1 ||  sundayMediumRunCounter == 1)) {
+          document.getElementById("recommended_run").innerHTML = "Easy difficulty run (Recovery run or rest day)";
+          sundayMediumRunCounter +=1;
+          console.log(sundayMediumRunCounter);          
+        }
+        else if (sun_route_type == "Base" && (mondayMediumRunCounter == 0 && tuesdayMediumRunCounter == 0 && wednesdayMediumRunCounter == 0 && thursdayMediumRunCounter == 0 && fridayMediumRunCounter == 0 && saturdayMediumRunCounter == 0 && sundayMediumRunCounter == 0)) {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+          sundayMediumRunCounter +=1;
+          console.log(sundayMediumRunCounter);          
+        }
+        else if (sun_route_type != "Base" && sundayMediumRunCounter == 1) {
+          sundayMediumRunCounter -=1;
+          console.log(sundayMediumRunCounter);
+        }
+        else if (sun_route_type == "Recovery" || sun_route_type == "Rest") {
+          document.getElementById("recommended_run").innerHTML = "Hard difficulty run (Tempo, intervals, or long run)";
+        }
+        else {
+          document.getElementById("recommended_run").innerHTML = "Insufficient input";
+        }
+      }
+    </script>
 
-      <button type="submit" class="route_input_submit" style="background-color:rgba(5, 150, 0, 0.425)">Add route</button>
-    </form>
   </body>
 </html>

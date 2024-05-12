@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var MySql = require('sync-mysql');
 var connection_info = require("../modules/connection_info")
+var { validator, body } = require('express-validator');
 
 router.get('/', function(req, res, next) {
   var connection = new MySql({
@@ -11,17 +12,14 @@ router.get('/', function(req, res, next) {
     database: connection_info.database
   });
   var running_plans = connection.query("SELECT * from running_plans");
-  //below line for reading routes info for plan creator or do i need another router.get('/' function (if possible)?
-  //var routes = connection.query("SELECT * from routes");
   console.log(running_plans);
   res.render('running_plans', { title: 'Express', running_plans:running_plans });
-  //res.render('running_plans', { title: 'Express', running_plans:running_plans, routes:routes });
 });
 
 router.get('/add', function(req, res, next){
   res.render('add_running_plan')
 })
-router.post('/add', function(req, res, next) {
+router.post('/add', body('monday').escape(), body('tuesday').escape(), body('wednesday').escape(), body('thursday').escape(), body('friday').escape(), body('saturday').escape(), body('sunday').escape(), function(req, res, next) {
   var monday = req.body.monday
   var tuesday = req.body.tuesday
   var wednesday = req.body.wednesday
